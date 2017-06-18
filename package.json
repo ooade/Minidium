@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "http-server -g",
-    "prestart": "npm run -s build",
+    "prestart": "npm run clean && npm run -s build",
     "build": "cross-env NODE_ENV=production webpack -p --progress",
     "clean": "rm -rf public mkdirp public",
     "dev": "node ./node_modules/webpack-dev-server/bin/webpack-dev-server.js",
@@ -23,6 +23,7 @@
     "cross-env": "^5.0.1",
     "html-webpack-plugin": "^2.28.0",
     "http-server": "^0.10.0",
+    "sw-precache-webpack-plugin": "^0.11.3",
     "webpack": "^2.6.1",
     "webpack-dev-server": "^2.4.5"
   },

@@ -7,10 +7,21 @@
   <meta name="mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="format-detection" content="telephone=no">
+  <meta name="theme-color" content="#43A047">
   <% for (var chunk in  htmlWebpackPlugin.files.chunks) { %>
     <link rel="preload" href="<%= htmlWebpackPlugin.files.chunks[chunk].entry %>" as="script"></script>
   <% } %>
+  <link rel="manifest" href="/static/manifest.json">
   <title>Minidium</title>
+  <script>
+    window.addEventListener('load', () => {
+        if ('serviceWorker' in navigator) {
+          navigator.serviceWorker.register('service-worker.js')
+          .then(() => console.log('Yay! we have a sw'))
+          .catch(() => console.log('Oh! No!!!'));
+        }
+    });
+  </script>
   <link rel="stylesheet" href="/static/css/reset.css">
   <link rel="stylesheet" href="/static/css/style.css">
 </head>
